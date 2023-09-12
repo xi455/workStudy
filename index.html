@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<style>
+  /* 自定义CSS样式来垂直居中 */
+  .table th {
+    text-align: center;
+    /* 水平居中 */
+    vertical-align: middle;
+    /* 垂直居中 */
+  }
+
+  .card{
+    max-height: 17rem;
+  }
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">工讀</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">教室課表</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row mt-5">
+      <table class="table table-bordered col-9">
+        <thead>
+          <tr>
+            <th colspan="3" class="text-center">晚班</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="col-4 text-center">#</th>
+            <td class="col-4 text-center">二</td>
+            <td class="col-4 text-center">五</td>
+          </tr>
+          <tr>
+            <th>
+              第九節 17:15 ~ 18:05
+            </th>
+            <td>
+              <li class="list-group-item text-center">606</li>
+            </td>
+            <td>
+              <li class="list-group-item text-center">607</li>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              第十一節 18:30 ~ 19:15
+            </th>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>
+              第十二節 19:20 ~ 20:05
+            </th>
+            <td>
+              <li class="list-group-item text-center">702</li>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>
+              第十三節 20:15 ~ 21:00
+            </th>
+            <td>
+              <li class="list-group-item text-center">607</li>
+              <li class="list-group-item text-center">707</li>
+              <li class="list-group-item text-center">708</li>
+            </td>
+            <td>
+              <li class="list-group-item text-center">702</li>
+              <li class="list-group-item text-center">707</li>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              第十四節 21:05 ~ 21:50
+            </th>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="col-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            可關教室
+          </div>
+          <ul id="is_close_door" class="list-group list-group-flush overflow-auto">
+            <li class="list-group-item text-center">601 (須看情況)</li>
+            <li class="list-group-item text-center">603 (須看情況)</li>
+            <li class="list-group-item text-center">602 (二)</li>
+            <li class="list-group-item text-center">703 (二)</li>
+            <li class="list-group-item text-center">602 (五)</li>
+            <li class="list-group-item text-center">606 (五)</li>
+            <li class="list-group-item text-center">703 (五)</li>
+            <li class="list-group-item text-center">708 (五)</li>
+          </ul>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            已關教室
+          </div>
+          <ul id="close_door" class="list-group list-group-flush overflow-auto">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  // 获取id="is_close_door"底下的所有li元素
+  const isCloseDoorList = document.querySelector("#is_close_door");
+  const closeDoorList = document.querySelector("#close_door");
+  const liItems = isCloseDoorList.querySelectorAll("li");
+
+  const table = document.querySelector("table")
+  const liTableItems = document.querySelectorAll("li")
+
+  // 添加cursor:pointer样式并添加点击事件监听器
+  liItems.forEach((li) => {
+    li.style.cursor = "pointer";
+    li.addEventListener("click", () => {
+      // 将被点击的li元素从isCloseDoorList移动到closeDoorList
+      closeDoorList.appendChild(li);
+    });
+  });
+
+  liTableItems.forEach((li) => {
+    li.style.cursor = "pointer";
+    li.addEventListener("click", () => {
+      // 将被点击的li元素从isCloseDoorList移动到closeDoorList
+      closeDoorList.appendChild(li);
+    });
+  });
+</script>
+
+</html>
